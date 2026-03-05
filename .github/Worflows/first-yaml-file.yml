@@ -1,2 +1,19 @@
 # Lets write our first YAML file.
 
+name: First YAML file
+
+#runs on trigger
+on:
+ push:
+  push: [main]
+
+#These are job inside Workflow
+jobs: 
+  greet:
+   runs-on: ubuntu-latest
+   steps:
+    - name: Say hello to users
+      runs: echo "hello dosto"
+
+    - name: Say hello to username
+      run: echo "$USER"
