@@ -1,0 +1,18 @@
+#name of the workflow
+name: Installations status
+#trigger mechanism
+on:
+ workflow_dispatch:
+#jobs
+jobs:
+
+ check:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Check the status of installation
+      run: git -v && docker -v && python3 -v
+
+ status:
+   runs-on: ubuntu-latest
+   steps:
+     - run: echo "the status is as above"
