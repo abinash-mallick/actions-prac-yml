@@ -5,7 +5,8 @@ name: First YAML file
 #runs on trigger
 on:
  push:
-  push: [main]
+  push:
+   branches: [main]
 
 #These are job inside Workflow
 jobs: 
@@ -13,7 +14,7 @@ jobs:
    runs-on: ubuntu-latest
    steps:
     - name: Say hello to users
-      runs: echo "hello dosto"
+      run: echo 'hello dosto'
 
     - name: Say hello to username
-      run: echo "$USER"
+      run: echo 'Hello $USER'
