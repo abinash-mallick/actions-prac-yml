@@ -1,0 +1,48 @@
+# Lets write a YAML fiel for practice
+name: Welcome to the world of YAML
+
+# Trigger mechanism
+on:
+ push:
+  branches:
+   - main
+
+ workflow_dispatch:
+
+jobs:
+
+ code:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+    - name: this is the code of the application.
+      run: echo "The code has been cloned"
+      shell: bash
+
+ build:
+  runs-on: ubuntu-latest
+  needs:
+   - code
+  steps:
+    - name: The code has been built
+      run: echo "Build the code"
+
+ test:
+  runs-on: ubuntu-latest
+  needs:
+   - code
+   - build
+  steps:
+    - name: The code has been tested
+      run: echo "Test the code"
+
+
+ deploy:
+  runs-on: ubuntu-latest
+  needs:
+   - code
+   - build
+   - test
+  steps:
+    - name: The code has been deployed
+      run: echo "Code deployed"
